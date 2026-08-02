@@ -1,0 +1,1281 @@
+{
+  "id": "ai-government-contract-incurred-cost-compliance",
+  "title": "GovCon Cost Compliance",
+  "tagline": "DCAA-ready incurred-cost submissions, indirect rates, allowability, and audit support",
+  "industry": "Government Contract Accounting",
+  "port": 4525,
+  "accent": "#334155",
+  "valueLabel": "Cost base governed",
+  "value": "$214M",
+  "workflows": [
+    {
+      "id": "ice-schedule",
+      "title": "ICE Schedule Preparation",
+      "description": "Prepare and reconcile required incurred-cost schedules, trial balance, contracts, pools, bases, and claimed costs.",
+      "fields": [
+        {
+          "key": "fiscalYear",
+          "label": "Fiscal Year",
+          "type": "number",
+          "required": true
+        },
+        {
+          "key": "schedule",
+          "label": "ICE Schedule",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "claimedCost",
+          "label": "Claimed Cost",
+          "type": "currency",
+          "required": true
+        },
+        {
+          "key": "reconciliationNotes",
+          "label": "Reconciliation Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "fiscalYear": 2025,
+            "schedule": "ICE Schedule STD-2026-104",
+            "claimedCost": 285000,
+            "reconciliationNotes": "Complete: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "fiscalYear": 2024,
+            "schedule": "ICE Schedule RISK-2026-227",
+            "claimedCost": 875000,
+            "reconciliationNotes": "Critical exception: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "fiscalYear": 2023,
+            "schedule": "ICE Schedule EXC-2026-319",
+            "claimedCost": 142500,
+            "reconciliationNotes": "Reviewer follow-up: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    },
+    {
+      "id": "indirect-rate",
+      "title": "Indirect Rate Calculation",
+      "description": "Calculate fringe, overhead, material handling, and G&A pools against compliant allocation bases.",
+      "fields": [
+        {
+          "key": "pool",
+          "label": "Indirect Pool",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "poolCost",
+          "label": "Pool Cost",
+          "type": "currency",
+          "required": true
+        },
+        {
+          "key": "allocationBase",
+          "label": "Allocation Base",
+          "type": "currency",
+          "required": true
+        },
+        {
+          "key": "rateRationale",
+          "label": "Rate Rationale",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "pool": "Indirect Pool STD-2026-104",
+            "poolCost": 285000,
+            "allocationBase": 285000,
+            "rateRationale": "Complete: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "pool": "Indirect Pool RISK-2026-227",
+            "poolCost": 875000,
+            "allocationBase": 875000,
+            "rateRationale": "Critical exception: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "pool": "Indirect Pool EXC-2026-319",
+            "poolCost": 142500,
+            "allocationBase": 142500,
+            "rateRationale": "Reviewer follow-up: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    },
+    {
+      "id": "unallowable",
+      "title": "Unallowable Cost Screening",
+      "description": "Identify expressly unallowable, directly associated, entertainment, lobbying, penalty, and unsupported costs.",
+      "fields": [
+        {
+          "key": "transactionId",
+          "label": "Transaction ID",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "account",
+          "label": "GL Account",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "amount",
+          "label": "Amount",
+          "type": "currency",
+          "required": true
+        },
+        {
+          "key": "allowabilityRationale",
+          "label": "Allowability Rationale",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "transactionId": "Transaction ID STD-2026-104",
+            "account": "GL Account STD-2026-104",
+            "amount": 285000,
+            "allowabilityRationale": "Complete: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "transactionId": "Transaction ID RISK-2026-227",
+            "account": "GL Account RISK-2026-227",
+            "amount": 875000,
+            "allowabilityRationale": "Critical exception: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "transactionId": "Transaction ID EXC-2026-319",
+            "account": "GL Account EXC-2026-319",
+            "amount": 142500,
+            "allowabilityRationale": "Reviewer follow-up: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    },
+    {
+      "id": "contract-reconcile",
+      "title": "Contract Cost Reconciliation",
+      "description": "Tie billed, recorded, claimed, funded, and ceiling-limited costs by contract and CLIN.",
+      "fields": [
+        {
+          "key": "contract",
+          "label": "Contract Number",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "clin",
+          "label": "CLIN",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "recordedCost",
+          "label": "Recorded Cost",
+          "type": "currency",
+          "required": true
+        },
+        {
+          "key": "billedCost",
+          "label": "Billed Cost",
+          "type": "currency",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "contract": "H1234",
+            "clin": "CLIN STD-2026-104",
+            "recordedCost": 285000,
+            "billedCost": 285000
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "contract": "H5678",
+            "clin": "CLIN RISK-2026-227",
+            "recordedCost": 875000,
+            "billedCost": 875000
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "contract": "H9012",
+            "clin": "CLIN EXC-2026-319",
+            "recordedCost": 142500,
+            "billedCost": 142500
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    },
+    {
+      "id": "subcontract",
+      "title": "Subcontract Cost Support",
+      "description": "Validate subcontract terms, consent, invoice support, fee treatment, and allocation to final cost objectives.",
+      "fields": [
+        {
+          "key": "subcontractor",
+          "label": "Subcontractor",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "subcontract",
+          "label": "Subcontract Number",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "incurredCost",
+          "label": "Incurred Cost",
+          "type": "currency",
+          "required": true
+        },
+        {
+          "key": "supportNotes",
+          "label": "Support Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "subcontractor": "Atlas Electrical Services",
+            "subcontract": "H1234",
+            "incurredCost": 285000,
+            "supportNotes": "Complete: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "subcontractor": "Summit Roofing Partners",
+            "subcontract": "H5678",
+            "incurredCost": 875000,
+            "supportNotes": "Critical exception: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "subcontractor": "Cedar Mechanical Group",
+            "subcontract": "H9012",
+            "incurredCost": 142500,
+            "supportNotes": "Reviewer follow-up: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    },
+    {
+      "id": "labor",
+      "title": "Labor Distribution Control",
+      "description": "Reconcile timekeeping, payroll, labor categories, direct charging, uncompensated overtime, and corrections.",
+      "fields": [
+        {
+          "key": "employee",
+          "label": "Employee",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "payPeriod",
+          "label": "Pay Period",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "laborHours",
+          "label": "Labor Hours",
+          "type": "number",
+          "required": true
+        },
+        {
+          "key": "distributionNotes",
+          "label": "Distribution Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "employee": "Employee STD-2026-104",
+            "payPeriod": "Pay Period STD-2026-104",
+            "laborHours": 125,
+            "distributionNotes": "Complete: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "employee": "Employee RISK-2026-227",
+            "payPeriod": "Pay Period RISK-2026-227",
+            "laborHours": 975,
+            "distributionNotes": "Critical exception: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "employee": "Employee EXC-2026-319",
+            "payPeriod": "Pay Period EXC-2026-319",
+            "laborHours": 41,
+            "distributionNotes": "Reviewer follow-up: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    },
+    {
+      "id": "adequacy",
+      "title": "Submission Adequacy Review",
+      "description": "Apply DCAA adequacy criteria, cross-schedule checks, signatures, certifications, and due dates.",
+      "fields": [
+        {
+          "key": "fiscalYear",
+          "label": "Fiscal Year",
+          "type": "number",
+          "required": true
+        },
+        {
+          "key": "scheduleCount",
+          "label": "Schedule Count",
+          "type": "number",
+          "required": true
+        },
+        {
+          "key": "exceptionCount",
+          "label": "Exception Count",
+          "type": "number",
+          "required": true
+        },
+        {
+          "key": "adequacyNotes",
+          "label": "Adequacy Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "fiscalYear": 2025,
+            "scheduleCount": 125,
+            "exceptionCount": 125,
+            "adequacyNotes": "Complete: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "fiscalYear": 2024,
+            "scheduleCount": 975,
+            "exceptionCount": 975,
+            "adequacyNotes": "Critical exception: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "fiscalYear": 2023,
+            "scheduleCount": 41,
+            "exceptionCount": 41,
+            "adequacyNotes": "Reviewer follow-up: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    },
+    {
+      "id": "audit-response",
+      "title": "DCAA Audit Response",
+      "description": "Control requests, provided-by-client evidence, questioned costs, position papers, and resolution.",
+      "fields": [
+        {
+          "key": "requestId",
+          "label": "Audit Request ID",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "requestDate",
+          "label": "Request Date",
+          "type": "date",
+          "required": true
+        },
+        {
+          "key": "responseDue",
+          "label": "Response Due",
+          "type": "date",
+          "required": true
+        },
+        {
+          "key": "responsePosition",
+          "label": "Response Position",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "requestId": "Audit Request ID STD-2026-104",
+            "requestDate": "2026-09-08",
+            "responseDue": "2026-09-08",
+            "responsePosition": "Complete: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "requestId": "Audit Request ID RISK-2026-227",
+            "requestDate": "2026-08-19",
+            "responseDue": "2026-08-19",
+            "responsePosition": "Critical exception: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "requestId": "Audit Request ID EXC-2026-319",
+            "requestDate": "2026-08-10",
+            "responseDue": "2026-08-10",
+            "responsePosition": "Reviewer follow-up: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "id": "ice-schedule",
+      "title": "ICE Schedule Preparation Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for ice schedule preparation.",
+      "table": "op_ice_schedule",
+      "columns": [
+        {
+          "key": "fiscalYear",
+          "label": "Fiscal Year",
+          "type": "number",
+          "required": true,
+          "dbKey": "data_fiscalYear"
+        },
+        {
+          "key": "schedule",
+          "label": "ICE Schedule",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_schedule"
+        },
+        {
+          "key": "claimedCost",
+          "label": "Claimed Cost",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_claimedCost"
+        },
+        {
+          "key": "reconciliationNotes",
+          "label": "Reconciliation Notes",
+          "type": "textarea",
+          "required": false,
+          "dbKey": "data_reconciliationNotes"
+        }
+      ]
+    },
+    {
+      "id": "indirect-rate",
+      "title": "Indirect Rate Calculation Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for indirect rate calculation.",
+      "table": "op_indirect_rate",
+      "columns": [
+        {
+          "key": "pool",
+          "label": "Indirect Pool",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_pool"
+        },
+        {
+          "key": "poolCost",
+          "label": "Pool Cost",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_poolCost"
+        },
+        {
+          "key": "allocationBase",
+          "label": "Allocation Base",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_allocationBase"
+        },
+        {
+          "key": "rateRationale",
+          "label": "Rate Rationale",
+          "type": "textarea",
+          "required": false,
+          "dbKey": "data_rateRationale"
+        }
+      ]
+    },
+    {
+      "id": "unallowable",
+      "title": "Unallowable Cost Screening Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for unallowable cost screening.",
+      "table": "op_unallowable",
+      "columns": [
+        {
+          "key": "transactionId",
+          "label": "Transaction ID",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_transactionId"
+        },
+        {
+          "key": "account",
+          "label": "GL Account",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_account"
+        },
+        {
+          "key": "amount",
+          "label": "Amount",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_amount"
+        },
+        {
+          "key": "allowabilityRationale",
+          "label": "Allowability Rationale",
+          "type": "textarea",
+          "required": false,
+          "dbKey": "data_allowabilityRationale"
+        }
+      ]
+    },
+    {
+      "id": "contract-reconcile",
+      "title": "Contract Cost Reconciliation Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for contract cost reconciliation.",
+      "table": "op_contract_reconcile",
+      "columns": [
+        {
+          "key": "contract",
+          "label": "Contract Number",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_contract"
+        },
+        {
+          "key": "clin",
+          "label": "CLIN",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_clin"
+        },
+        {
+          "key": "recordedCost",
+          "label": "Recorded Cost",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_recordedCost"
+        },
+        {
+          "key": "billedCost",
+          "label": "Billed Cost",
+          "type": "currency",
+          "required": false,
+          "dbKey": "data_billedCost"
+        }
+      ]
+    },
+    {
+      "id": "subcontract",
+      "title": "Subcontract Cost Support Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for subcontract cost support.",
+      "table": "op_subcontract",
+      "columns": [
+        {
+          "key": "subcontractor",
+          "label": "Subcontractor",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_subcontractor"
+        },
+        {
+          "key": "subcontract",
+          "label": "Subcontract Number",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_subcontract"
+        },
+        {
+          "key": "incurredCost",
+          "label": "Incurred Cost",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_incurredCost"
+        },
+        {
+          "key": "supportNotes",
+          "label": "Support Notes",
+          "type": "textarea",
+          "required": false,
+          "dbKey": "data_supportNotes"
+        }
+      ]
+    },
+    {
+      "id": "labor",
+      "title": "Labor Distribution Control Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for labor distribution control.",
+      "table": "op_labor",
+      "columns": [
+        {
+          "key": "employee",
+          "label": "Employee",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_employee"
+        },
+        {
+          "key": "payPeriod",
+          "label": "Pay Period",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_payPeriod"
+        },
+        {
+          "key": "laborHours",
+          "label": "Labor Hours",
+          "type": "number",
+          "required": true,
+          "dbKey": "data_laborHours"
+        },
+        {
+          "key": "distributionNotes",
+          "label": "Distribution Notes",
+          "type": "textarea",
+          "required": false,
+          "dbKey": "data_distributionNotes"
+        }
+      ]
+    },
+    {
+      "id": "adequacy",
+      "title": "Submission Adequacy Review Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for submission adequacy review.",
+      "table": "op_adequacy",
+      "columns": [
+        {
+          "key": "fiscalYear",
+          "label": "Fiscal Year",
+          "type": "number",
+          "required": true,
+          "dbKey": "data_fiscalYear"
+        },
+        {
+          "key": "scheduleCount",
+          "label": "Schedule Count",
+          "type": "number",
+          "required": true,
+          "dbKey": "data_scheduleCount"
+        },
+        {
+          "key": "exceptionCount",
+          "label": "Exception Count",
+          "type": "number",
+          "required": true,
+          "dbKey": "data_exceptionCount"
+        },
+        {
+          "key": "adequacyNotes",
+          "label": "Adequacy Notes",
+          "type": "textarea",
+          "required": false,
+          "dbKey": "data_adequacyNotes"
+        }
+      ]
+    },
+    {
+      "id": "audit-response",
+      "title": "DCAA Audit Response Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for dcaa audit response.",
+      "table": "op_audit_response",
+      "columns": [
+        {
+          "key": "requestId",
+          "label": "Audit Request ID",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_requestId"
+        },
+        {
+          "key": "requestDate",
+          "label": "Request Date",
+          "type": "date",
+          "required": true,
+          "dbKey": "data_requestDate"
+        },
+        {
+          "key": "responseDue",
+          "label": "Response Due",
+          "type": "date",
+          "required": true,
+          "dbKey": "data_responseDue"
+        },
+        {
+          "key": "responsePosition",
+          "label": "Response Position",
+          "type": "textarea",
+          "required": false,
+          "dbKey": "data_responsePosition"
+        }
+      ]
+    },
+    {
+      "id": "contract-master",
+      "title": "Government Contract Master",
+      "description": "Contracts, agencies, types, clauses, periods, ceilings, and funding.",
+      "table": "op_contract_master",
+      "columns": [
+        {
+          "key": "contract",
+          "label": "Contract",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_contract"
+        },
+        {
+          "key": "agency",
+          "label": "Agency",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_agency"
+        },
+        {
+          "key": "contractType",
+          "label": "Contract Type",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_contractType"
+        },
+        {
+          "key": "fundedValue",
+          "label": "Funded Value",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_fundedValue"
+        }
+      ]
+    },
+    {
+      "id": "pool-base-master",
+      "title": "Indirect Pool & Base Master",
+      "description": "Pools, accounts, allocation bases, service centers, and rate structures.",
+      "table": "op_pool_base_master",
+      "columns": [
+        {
+          "key": "pool",
+          "label": "Pool",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_pool"
+        },
+        {
+          "key": "poolType",
+          "label": "Pool Type",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_poolType"
+        },
+        {
+          "key": "allocationBase",
+          "label": "Allocation Base",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_allocationBase"
+        },
+        {
+          "key": "provisionalRate",
+          "label": "Provisional Rate",
+          "type": "number",
+          "required": true,
+          "dbKey": "data_provisionalRate"
+        }
+      ]
+    },
+    {
+      "id": "far-cost-library",
+      "title": "FAR Cost Principle Library",
+      "description": "Cost principles, allowability tests, documentation, approvals, and citations.",
+      "table": "op_far_cost_library",
+      "columns": [
+        {
+          "key": "costType",
+          "label": "Cost Type",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_costType"
+        },
+        {
+          "key": "farCitation",
+          "label": "FAR Citation",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_farCitation"
+        },
+        {
+          "key": "allowability",
+          "label": "Allowability",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_allowability"
+        },
+        {
+          "key": "documentation",
+          "label": "Documentation",
+          "type": "textarea",
+          "required": true,
+          "dbKey": "data_documentation"
+        }
+      ]
+    },
+    {
+      "id": "ice-schedule-master",
+      "title": "ICE Schedule Control",
+      "description": "Schedule definitions, sources, preparers, reviewers, cross-checks, and status.",
+      "table": "op_ice_schedule_master",
+      "columns": [
+        {
+          "key": "schedule",
+          "label": "Schedule",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_schedule"
+        },
+        {
+          "key": "purpose",
+          "label": "Purpose",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_purpose"
+        },
+        {
+          "key": "preparer",
+          "label": "Preparer",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_preparer"
+        },
+        {
+          "key": "crossChecks",
+          "label": "Cross-Checks",
+          "type": "textarea",
+          "required": true,
+          "dbKey": "data_crossChecks"
+        }
+      ]
+    }
+  ],
+  "domainProduct": {
+    "home": "Incurred Cost Compliance Center",
+    "context": "A government-contractor system for ICE schedules, indirect rates, cost allowability, contract reconciliation, adequacy, and audit defense.",
+    "features": [
+      {
+        "id": "ice-preparation",
+        "title": "ICE Submission Preparation",
+        "description": "Build schedules from reconciled books, contract costs, pools, bases, billings, and supporting data.",
+        "view": "evidence",
+        "modules": [
+          "ice-schedule",
+          "ice-schedule-master"
+        ],
+        "actions": [
+          {
+            "id": "approve-schedule",
+            "label": "Approve ICE Schedule",
+            "nextStatus": "Approved",
+            "auditDetail": "Approved reconciled ICE schedule."
+          },
+          {
+            "id": "return-schedule",
+            "label": "Return Schedule for Correction",
+            "nextStatus": "Investigating",
+            "auditDetail": "Returned ICE schedule for reconciliation correction."
+          }
+        ]
+      },
+      {
+        "id": "rate-structure",
+        "title": "Indirect Rate Structure",
+        "description": "Calculate pools and bases, service centers, allocation logic, rate ceilings, and claimed rates.",
+        "view": "reconciliation",
+        "modules": [
+          "indirect-rate",
+          "pool-base-master"
+        ],
+        "actions": [
+          {
+            "id": "approve-rate",
+            "label": "Approve Final Indirect Rate",
+            "nextStatus": "Approved",
+            "auditDetail": "Approved final indirect rate calculation."
+          },
+          {
+            "id": "reclassify-pool",
+            "label": "Reclassify Pool Cost",
+            "nextStatus": "Review",
+            "auditDetail": "Reclassified cost between indirect pools."
+          }
+        ]
+      },
+      {
+        "id": "cost-allowability",
+        "title": "FAR Cost Allowability",
+        "description": "Screen transactions and directly associated costs against FAR Part 31 and contract terms.",
+        "view": "control",
+        "modules": [
+          "unallowable",
+          "far-cost-library"
+        ],
+        "actions": [
+          {
+            "id": "exclude-cost",
+            "label": "Exclude Unallowable Cost",
+            "nextStatus": "Approved",
+            "auditDetail": "Excluded unallowable cost from claim."
+          },
+          {
+            "id": "refer-counsel",
+            "label": "Refer Allowability Position",
+            "nextStatus": "Review",
+            "auditDetail": "Referred disputed cost allowability position."
+          }
+        ]
+      },
+      {
+        "id": "contract-costs",
+        "title": "Contract & CLIN Reconciliation",
+        "description": "Tie recorded, billed, funded, ceiling-limited, claimed, and subcontract costs.",
+        "view": "reconciliation",
+        "modules": [
+          "contract-reconcile",
+          "contract-master"
+        ],
+        "actions": [
+          {
+            "id": "approve-contract",
+            "label": "Approve Contract Reconciliation",
+            "nextStatus": "Approved",
+            "auditDetail": "Approved contract and CLIN cost reconciliation."
+          },
+          {
+            "id": "open-ceiling",
+            "label": "Open Ceiling Exception",
+            "nextStatus": "Investigating",
+            "auditDetail": "Opened cost or funding ceiling exception."
+          }
+        ]
+      },
+      {
+        "id": "dcaa-response",
+        "title": "DCAA Adequacy & Audit Response",
+        "description": "Control submission certification, adequacy tests, requests, questioned costs, and position papers.",
+        "view": "deadline",
+        "modules": [
+          "adequacy",
+          "audit-response"
+        ],
+        "actions": [
+          {
+            "id": "certify-submission",
+            "label": "Certify Incurred Cost Submission",
+            "nextStatus": "Approved",
+            "auditDetail": "Certified adequate incurred-cost submission."
+          },
+          {
+            "id": "issue-position",
+            "label": "Issue Audit Position Paper",
+            "nextStatus": "Review",
+            "auditDetail": "Issued supported audit response position."
+          }
+        ]
+      }
+    ]
+  },
+  "integrations": [
+    {
+      "id": "integration-1",
+      "name": "ERP general ledger",
+      "category": "Domain data source",
+      "mode": "Read-only demo connector"
+    },
+    {
+      "id": "integration-2",
+      "name": "Timekeeping",
+      "category": "Domain data source",
+      "mode": "Read-only demo connector"
+    },
+    {
+      "id": "integration-3",
+      "name": "Payroll",
+      "category": "Domain data source",
+      "mode": "Read-only demo connector"
+    },
+    {
+      "id": "integration-4",
+      "name": "Contract billing",
+      "category": "Domain data source",
+      "mode": "Read-only demo connector"
+    },
+    {
+      "id": "integration-5",
+      "name": "DCAA ICE export",
+      "category": "Domain data source",
+      "mode": "Read-only demo connector"
+    }
+  ],
+  "featureCount": 40,
+  "seededRecords": 300,
+  "demoUsers": 3,
+  "apiPort": 5525,
+  "dbName": "profit_ai_government_contract_incurred_cost_compliance"
+}
