@@ -7,6 +7,15 @@
   "accent": "#334155",
   "valueLabel": "Cost base governed",
   "value": "$214M",
+  "commercialExtension": {
+    "title": "GovCon ICE & Allowability Lab",
+    "summary": "Model questioned-cost exposure and stage GL, timekeeping, contract, billing, indirect-rate, and DCAA-response evidence.",
+    "baselineLabel": "Annual governed cost base", "volumeLabel": "Annual cost transactions", "unitValueLabel": "Average transaction value", "opportunityRateLabel": "Exception / questioned rate", "captureRateLabel": "Defensible resolution rate",
+    "defaults": { "volume": 180000, "unitValue": 1200, "opportunityRate": 2.8, "captureRate": 65 },
+    "pricing": "Annual subscription by entity and contract volume with CPA implementation and audit-response service tiers.",
+    "milestones": ["Tie GL and timekeeping to contract and CLIN", "Calculate approved pools, bases, and indirect rates", "Review FAR allowability and cross-schedule exceptions", "Release ICE schedules and DCAA response evidence"],
+    "connectors": [{"name":"General ledger and timekeeping","status":"Pilot","purpose":"Direct, indirect, labor, and account-level evidence","evidence":"Transaction lineage, employee time, corrections, and period controls"},{"name":"Contract and billing system","status":"Planned","purpose":"Contract, CLIN, funding, ceilings, and billed-cost reconciliation","evidence":"Effective terms, invoice references, and cumulative balances"},{"name":"Audit request portal","status":"Planned","purpose":"PBC requests, evidence, questioned costs, and resolution","evidence":"Delivery receipts, reviewer approval, and immutable correspondence"}]
+  },
   "workflows": [
     {
       "id": "ice-schedule",
